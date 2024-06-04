@@ -33,3 +33,19 @@ export const defaultCartItems = [
 		image: spanishRice,
 	},
 ];
+
+export const formatCurrency = (amount: number) => {
+	if (typeof amount !== "number") {
+		return null;
+	}
+
+	return amount
+		.toLocaleString("en-US", {
+			style: "currency",
+			currency: "USD",
+			minimumFractionDigits: 0,
+			maximumFractionDigits: 0,
+		})
+		.replace("$", "")
+		.trim();
+};

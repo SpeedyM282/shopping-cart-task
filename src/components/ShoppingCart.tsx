@@ -9,8 +9,8 @@ const ShoppingCart = () => {
 
 	return (
 		<div className="flex justify-center flex-wrap gap-[55px]">
-			<div className="flex flex-col gap-6">
-				<button className="flex items-center gap-1">
+			<div className="flex flex-col gap-6 min-w-[600px]">
+				<button className="flex items-center gap-1 w-fit">
 					<img src={arrowLeft} alt="Arrow left" />
 					Shopping Continue
 				</button>
@@ -19,7 +19,10 @@ const ShoppingCart = () => {
 
 				<div className="mb-[5px]">
 					<h3 className="text-lg ">Shopping cart</h3>
-					<p className="text-sm ">You have 3 items in your cart</p>
+					<p className="text-sm ">
+						You have {cartItems.length} item{cartItems.length !== 1 && "s"} in
+						your cart
+					</p>
 				</div>
 
 				{cartItems.map((item: ICartItem) => (

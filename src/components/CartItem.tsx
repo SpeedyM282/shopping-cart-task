@@ -13,10 +13,13 @@ const CartItem: React.FC<ICartItem> = ({
 	subtitle,
 }) => {
 	const { deleteRecord } = useIndexedDB("cartItems");
-	const { deleteCartItem } = useContext(CartContext);
+	const { deleteCartItem, incrementCartItem, decrementCartItem } =
+		useContext(CartContext);
 
 	const handleDelete = () => {
-		deleteRecord(1).then(() => console.log("deleted"));
+		deleteRecord(id).catch((e) =>
+			alert("Something happened please try again later.")
+		);
 		deleteCartItem(id);
 	};
 
@@ -35,8 +38,8 @@ const CartItem: React.FC<ICartItem> = ({
 				<p>{amount}</p>
 
 				<AddReduceButtons
-					onAdd={() => console.log("hello")}
-					onReduce={() => console.log("hello")}
+					onAdd={() => incrementCartItem(id)}
+					onReduce={() => decrementCartItem(id)}
 				/>
 			</div>
 
