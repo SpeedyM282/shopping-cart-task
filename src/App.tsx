@@ -8,7 +8,7 @@ initDB(DBConfig);
 const App = () => {
 	return (
 		<CartProvider>
-			<main className="py-12 px-8 w-full">
+			<main className="py-9 px-5 w-full tabletSm:px-8 tabletSm:py-12">
 				<ShoppingCart />
 			</main>
 		</CartProvider>

@@ -1,10 +1,10 @@
 import { ChangeEvent, useContext, useState } from "react";
-import { cards, formatCurrency } from "../mock";
 import CardForm from "./CardForm";
-import arrowRight from "../assets/icons/arrow-right.svg";
-import profileImg from "../assets/images/profile-img.png";
+import { cards, formatCurrency } from "../mock";
 import { CartContext } from "../context/CartContext";
 import { useIndexedDB } from "react-indexed-db-hook";
+import arrowRight from "../assets/icons/arrow-right.svg";
+import profileImg from "../assets/images/profile-img.png";
 
 const PaymentCard = () => {
 	const { add } = useIndexedDB("order");
@@ -34,7 +34,7 @@ const PaymentCard = () => {
 	};
 
 	return (
-		<div className="p-[20px] w-[388px] rounded-[20px] bg-[#565ABB] flex flex-col gap-[15px]">
+		<div className="p-[20px] max-w-[388px] min-w-[280px] rounded-[20px] bg-[#565ABB] flex flex-col gap-[15px]">
 			<div className="flex justify-between items-center">
 				<h2 className="text-[22px] text-white font-semibold">Card Details</h2>
 
@@ -47,14 +47,14 @@ const PaymentCard = () => {
 				<div className="flex gap-4">
 					{cards.map((card) => (
 						<img
-							className="rounded-[5px]"
+							className="rounded-[5px] w-[40px] phoneMedium:w-[55px] phoneLarge:w-auto"
 							key={card}
 							src={card}
 							alt="Credit card"
 						/>
 					))}
 
-					<button className="w-[75px] bg-[#D9D9D933] rounded-[5px] text-white font-bold text-sm">
+					<button className="w-[55px] bg-[#D9D9D933] rounded-[5px] text-white font-bold text-sm phoneLarge:w-[75px]">
 						See all
 					</button>
 				</div>

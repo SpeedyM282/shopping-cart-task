@@ -24,29 +24,35 @@ const CartItem: React.FC<ICartItem> = ({
 	};
 
 	return (
-		<div className="p-2.5 flex items-center justify-between gap-4 rounded-[15px] w-[600px] shadow-cartItem">
-			<div className="flex items-center gap-4 w-2/4">
-				<img className="rounded-lg" src={image} alt="Cart item" />
+		<div className="p-2.5 flex flex-col items-center justify-between gap-4 rounded-[15px] w-[200px] tabletSm:w-full shadow-cartItem tabletSm:flex-row">
+			<div className="flex flex-col items-center gap-4 tabletSm:w-2/4 tabletSm:flex-row">
+				<img
+					className="rounded-lg w-full max-w-[100px] tabletSm:w-auto"
+					src={image}
+					alt="Cart item"
+				/>
 
 				<div>
-					<h5 className="text-lg ">{title}</h5>
-					<p className="text-sm ">{subtitle}</p>
+					<h5 className="text-lg text-center tabletSm:text-left">{title}</h5>
+					<p className="text-sm text-center text-ellipsis overflow-hidden text-nowrap w-44 tabletSm:text-left tabletSm:w-auto tabletSm:text-wrap tabletSm:overflow-auto">
+						{subtitle}
+					</p>
 				</div>
 			</div>
 
-			<div className="flex items-center gap-1.5 text-[22px] font-semibold">
-				<p>{amount}</p>
+			<AddReduceButtons
+				amount={amount}
+				onAdd={() => incrementCartItem(id)}
+				onReduce={() => decrementCartItem(id)}
+			/>
 
-				<AddReduceButtons
-					onAdd={() => incrementCartItem(id)}
-					onReduce={() => decrementCartItem(id)}
-				/>
-			</div>
+			<p className="text-base tabletSm:text-sm ">${price}</p>
 
-			<p className="text-sm ">${price}</p>
-
-			<button className="mr-[13px] cursor-pointer" onClick={handleDelete}>
-				<img src={trash} />
+			<button
+				className="tabletSm:mr-[13px] cursor-pointer"
+				onClick={handleDelete}
+			>
+				<img src={trash} alt="Trash icon" />
 			</button>
 		</div>
 	);
